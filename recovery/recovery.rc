@@ -17,9 +17,12 @@ on init
     mkdir /data
     mkdir /cache
     mount /tmp /tmp tmpfs
-    insmod /sec.ko
+    insmod /sbup.ko
     mknod /dev/sec c 182 0
     chmod 0660 /dev/sec
+
+    chown root shell /tmp
+    chmod 0775 /tmp
 
 on boot
 
@@ -37,12 +40,17 @@ service recovery /sbin/recovery
 service adbd /sbin/adbd recovery
     disabled
 
+# adbd is controlled via property triggers in init.<platform>.usb.rc
+service adbd /sbin/adbd
+    class core
+    disabled
+    
 # Always start adbd on userdebug and eng builds
 on property:ro.debuggable=1
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/iSerial CWM-WALTON-Primo_H2
-    write /sys/class/android_usb/android0/iManufacturer WALTON
-    write /sys/class/android_usb/android0/iProduct Primo_H2
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/idVendor 0bb4
     write /sys/class/android_usb/android0/idProduct 0c03
     write /sys/class/android_usb/android0/functions mass_storage,adb
@@ -55,3 +63,4 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
+

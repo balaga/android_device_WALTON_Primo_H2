@@ -18,7 +18,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/sec.ko:recovery/root/sec.ko 
+    $(LOCAL_PATH)/recovery/sbup.ko:recovery/root/sbup.ko 
 
 PRODUCT_PACKAGES += \
     static_busybox \
@@ -30,3 +30,4 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=7
 PRODUCT_NAME := full_Primo_H2
 PRODUCT_DEVICE := Primo_H2
+
