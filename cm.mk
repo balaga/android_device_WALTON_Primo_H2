@@ -8,11 +8,11 @@ PRODUCT_RELEASE_NAME := Primo_H2
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/Walton/Primo_H2/device_Primo_H2.mk)
+$(call inherit-product, device/WALTON/Primo_H2/device_Primo_H2.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := Primo_H2
 PRODUCT_NAME := cm_Primo_H2
-PRODUCT_BRAND := Walton
+PRODUCT_BRAND := WALTON
 PRODUCT_MODEL := Primo_H2
-PRODUCT_MANUFACTURER := Walton
+PRODUCT_MANUFACTURER := WALTON

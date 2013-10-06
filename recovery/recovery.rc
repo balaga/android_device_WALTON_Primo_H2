@@ -29,7 +29,7 @@ on boot
 
     class_start default
 
-service ueventd /sbin/recovery/ueventd
+service ueventd /sbin/ueventd
     critical
 
 service recovery /sbin/recovery
@@ -41,7 +41,7 @@ service adbd /sbin/adbd recovery
 on property:ro.debuggable=1
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/iSerial CWM-WALTON-Primo_H2
-    write /sys/class/android_usb/android0/iManufacturer Walton
+    write /sys/class/android_usb/android0/iManufacturer WALTON
     write /sys/class/android_usb/android0/iProduct Primo_H2
     write /sys/class/android_usb/android0/idVendor 0bb4
     write /sys/class/android_usb/android0/idProduct 0c03
